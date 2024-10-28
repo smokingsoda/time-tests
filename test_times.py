@@ -13,7 +13,7 @@ def test_given_input():
 
 
 def test_two_ranges_do_not_overlap():
-    large = time_range("2024-10-28 10:00:00", "2024-10-28 12:00:00")
+    large = time_range("2024-01-12 10:00:00", "2024-01-12 12:00:00")
     short = time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60)
     result = compute_overlap_time(large, short)
     expected = []
@@ -27,10 +27,7 @@ def test_several_intervals():
     expected = [
         ("2010-01-12 10:30:00", "2010-01-12 10:37:00"),
         ("2010-01-12 10:38:00", "2010-01-12 10:40:00"),
-        ("2010-01-12 10:40:00", "2010-01-12 10:37:00"),
         ("2010-01-12 10:40:00", "2010-01-12 10:45:00"),
-        ("2010-01-12 11:20:00", "2010-01-12 10:37:00"),
-        ("2010-01-12 11:20:00", "2010-01-12 10:45:00"),
     ]
     assert result == expected, f"Expected: {expected}, Actual: {result}"
 
@@ -41,6 +38,3 @@ def test_different_starts_and_same_ends():
     result = compute_overlap_time(large, short)
     expected = []
     assert result == expected, f"Expected: {expected}, Actual: {result}"
-
-
-test_given_input()
