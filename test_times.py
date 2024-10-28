@@ -41,6 +41,7 @@ def test_different_starts_and_same_ends():
     assert result == expected, f"Expected: {expected}, Actual: {result}"
 
 
-def test_invalid_input():
-    with pytest.raises(ValueError):
-        time_range("10:00:00", "2010-01-12 12:00:00")
+def test_backwards_time_range():
+    expected_error_message = "Start time is after end time!"
+    with pytest.raises(ValueError, match=expected_error_message):
+        time_range("2010-01-12 12:00:00", "2010-01-12 10:00:00")
